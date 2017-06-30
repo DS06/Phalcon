@@ -1,0 +1,35 @@
+<h2>Delete contact using this form</h2>
+<p>Enter the ID contact which will be updated.</p>
+
+<?php echo $this->tag->form('contacts/delete') ?>
+    <label for="ID"> First name:</label>
+    <?php echo $this->tag->textField("ID");
+
+    echo $this->tag->submitButton("Delete") ?>
+    </form>
+
+
+
+
+<table border="1", width="60%">
+    <col align="center" width="50">
+    <tr align="center"><td><b>ID </b></td><td><b>Firs name</b></td><td><b>Last name</b></td><td><b>Phone</b></td></tr>
+    <?php
+    $contacts =$this->db->fetchAll (
+        "SELECT * FROM contacts"
+    );
+    foreach  ( $contacts as  $contact ) {
+        echo "<tr><td>".$contact['Id_contact']."</td>";
+        echo "<td>".$contact['first_name']."</td>";
+        echo "<td>".$contact['last_name']."</td>";
+        echo "<td>".$contact['phone']."</td>";
+
+    }
+    echo "</tr>";
+    ?>
+</table>
+
+
+
+<hr>
+<p><?php echo $this->tag->linkTo("","Back")?></p>

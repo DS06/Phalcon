@@ -1,0 +1,32 @@
+
+<h1>Contacts:</h1>
+<table border="1", width="60%">
+    <tr align="center"><td><b>First name </b></td><td><b>Last name</b></td><td><b>Phone</b></td><td><b>Bio</b></td></tr>
+        <?php
+        $contacts =$this->db->fetchAll (
+            "SELECT * FROM contacts"
+        );
+        foreach  ( $contacts as  $contact ) {
+            echo "<tr><td>".$contact['first_name']."</td>";
+            echo "<td>".$contact['last_name']."</td>";
+            echo "<td>".$contact['phone']."</td>";
+            echo "<td>".$contact['bio']."</td>";
+        }
+        echo "</tr>";
+        ?>
+</table>
+<hr>
+
+<table>
+    <col align="center" width="120">
+    <col align="center" width="130">
+    <col align="center" width="120">
+    <tr>
+        <td><?php echo $this->tag->linkTo("contacts/signup", "Add contact")?></td>
+        <td><?php echo $this->tag->linkTo("contacts/del", "Delete contact")?></td>
+        <td><?php echo $this->tag->linkTo("contacts/up", "Udpate contact")?></td>
+    </tr>
+</table>
+
+
+

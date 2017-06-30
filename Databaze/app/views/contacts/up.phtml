@@ -1,0 +1,58 @@
+<h2>Update contact using this form</h2>
+<p>Enter the ID contact a and new information which will be updated.</p>
+
+<?php echo $this->tag->form('contacts/update') ?>
+
+<table>
+
+    <tr>
+        <td><label for="ID"> ID:</label></td>
+        <td><?php echo $this->tag->textField("ID");?></td>
+    </tr>
+
+    <tr>
+        <td><label for="first_name"> First name:</label></td>
+        <td><?php echo $this->tag->textField("first_name") ?></td>
+    </tr>
+    <tr>
+        <td><label for="last_name">Last name:</label></td>
+        <td><?php echo $this->tag->textField("last_name") ?></td>
+    </tr>
+    <tr>
+        <td><label for="phone">Phone:</label></td>
+        <td><?php echo $this->tag->textField("phone");?></td>
+    </tr>
+    <tr>
+        <td><label for="bio">Bio: </label></td>
+        <td><?php echo $this->tag->textField("bio");?></td>
+    </tr>
+</table>
+
+<?php echo $this->tag->submitButton("Update") ?>
+</form>
+
+
+
+
+<table border="1", width="60%">
+    <col align="center" width="50">
+    <tr align="center"><td><b>ID </b></td><td><b>Firs name</b></td><td><b>Last name</b></td><td><b>Phone</b></td></tr>
+    <?php
+    $contacts =$this->db->fetchAll (
+        "SELECT * FROM contacts"
+    );
+    foreach  ( $contacts as  $contact ) {
+        echo "<tr><td>".$contact['Id_contact']."</td>";
+        echo "<td>".$contact['first_name']."</td>";
+        echo "<td>".$contact['last_name']."</td>";
+        echo "<td>".$contact['phone']."</td>";
+
+    }
+    echo "</tr>";
+    ?>
+</table>
+
+
+
+<hr>
+<p><?php echo $this->tag->linkTo("","Back")?></p>
